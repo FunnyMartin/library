@@ -1,0 +1,4 @@
+name,surname,email,membership_type,active,created_at
+Jan,Novák,jan.novak@email.cz,basic,1,2024-01-10 10:30:00
+Petra,Svobodová,petra.svobodova@email.cz,premium,1,2024-02-05 14:15:00
+Tomáš,Dvořák,tomas.dvorak@email.cz,basic,0,2023-11-20 09:00:00

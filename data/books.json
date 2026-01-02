@@ -1,0 +1,42 @@
+[
+  {
+    "title": "1984",
+    "isbn": "9780451524935",
+    "genre": "fiction",
+    "published_year": 1949,
+    "authors": [
+      {
+        "name": "George",
+        "surname": "Orwell"
+      }
+    ]
+  },
+  {
+    "title": "Clean Code",
+    "isbn": "9780132350884",
+    "genre": "nonfiction",
+    "published_year": 2008,
+    "authors": [
+      {
+        "name": "Robert",
+        "surname": "Martin"
+      }
+    ]
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "isbn": "9780201616224",
+    "genre": "nonfiction",
+    "published_year": 1999,
+    "authors": [
+      {
+        "name": "Andrew",
+        "surname": "Hunt"
+      },
+      {
+        "name": "David",
+        "surname": "Thomas"
+      }
+    ]
+  }
+]
