@@ -1,9 +1,9 @@
 # Public Library Management System
 
-**Autor:** Martin Šilar
-**Škola:** SPŠE Ječná
-**Datum:** 29. 12. 2025
-**Typ práce:** Školní projekt – návrh řešení
+**Autor:** Martin Šilar  
+**Škola:** SPŠE Ječná  
+**Datum:** 29. 12. 2025  
+**Typ práce:** Školní projekt – návrh řešení  
 
 ---
 

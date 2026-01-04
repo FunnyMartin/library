@@ -1,9 +1,9 @@
 # Public Library Management System
 
-**Autor:** Martin Šilar
-**Škola:** SPŠE Ječná
-**Datum:** 4. 1. 2026
-**Typ práce:** Školní projekt – programování a databázové systémy
+**Autor:** Martin Šilar  
+**Škola:** SPŠE Ječná  
+**Datum:** 4. 1. 2026  
+**Typ práce:** Školní projekt – programování a databázové systémy  
 
 ---
 

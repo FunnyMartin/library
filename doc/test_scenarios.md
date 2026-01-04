@@ -1,9 +1,9 @@
 # Public Library Management System
 
-**Autor:** Martin Šilar
-**Škola:** SPŠE Ječná
-**Datum:** 4. 1. 2026
-**Projekt:** Školní projekt – testovací scénáře
+**Autor:** Martin Šilar  
+**Škola:** SPŠE Ječná  
+**Datum:** 4. 1. 2026  
+**Projekt:** Školní projekt – testovací scénáře  
 
 ---
 
