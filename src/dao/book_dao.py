@@ -28,3 +28,20 @@ class BookDAO:
         cursor.close()
         conn.close()
         return result
+    
+    def create(self, title, isbn, genre, published_year):
+            conn = get_connection()
+            cursor = conn.cursor()
+
+            cursor.execute(
+                """
+                INSERT INTO books (title, isbn, genre, published_year)
+                VALUES (%s, %s, %s, %s)
+                """,
+                (title, isbn, genre, published_year)
+            )
+
+            conn.commit()
+            cursor.close()
+            conn.close()
+    
