@@ -1,10 +1,16 @@
 # src/service/library_service.py
-
 from src.db.connection import get_connection
+
 
 class LibraryService:
 
     def borrow_book(self, member_id, copy_id, due_date):
+        if member_id <= 0 or copy_id <= 0:
+            raise Exception("Invalid ID")
+
+        if not due_date:
+            raise Exception("Due date required")
+
         conn = get_connection()
         cursor = conn.cursor()
 
@@ -14,7 +20,11 @@ class LibraryService:
                 (copy_id,)
             )
             row = cursor.fetchone()
-            if row is None or row[0] != "available":
+
+            if row is None:
+                raise Exception("Copy not found")
+
+            if row[0] != "available":
                 raise Exception("Copy is not available")
 
             cursor.execute(
@@ -41,6 +51,9 @@ class LibraryService:
             conn.close()
 
     def return_book(self, loan_id):
+        if loan_id <= 0:
+            raise Exception("Invalid loan ID")
+
         conn = get_connection()
         cursor = conn.cursor()
 
@@ -50,6 +63,7 @@ class LibraryService:
                 (loan_id,)
             )
             row = cursor.fetchone()
+
             if row is None:
                 raise Exception("Loan not found")
 

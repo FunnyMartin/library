@@ -1,5 +1,7 @@
 # src/cli/app.py
 
+from datetime import datetime
+
 from src.dao.member_dao import MemberDAO
 from src.dao.book_dao import BookDAO
 from src.dao.loan_dao import LoanDAO
@@ -18,20 +20,31 @@ def print_menu():
     print("0. Exit")
 
 
+def read_int(prompt):
+    value = input(prompt).strip()
+    if not value.isdigit():
+        raise Exception("Expected number")
+    return int(value)
+
+
+def read_date(prompt):
+    value = input(prompt).strip()
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+        return value
+    except ValueError:
+        raise Exception("Invalid date format, expected YYYY-MM-DD")
+
+
 def choose_file(files):
     for i, f in enumerate(files, start=1):
         print(f"{i}. {f}")
 
-    choice = input("Select file: ")
-
-    if not choice.isdigit():
-        raise Exception("Invalid input")
-
-    index = int(choice) - 1
-    if index < 0 or index >= len(files):
+    idx = read_int("Select file: ") - 1
+    if idx < 0 or idx >= len(files):
         raise Exception("Invalid selection")
 
-    return files[index]
+    return files[idx]
 
 
 def main():
@@ -42,72 +55,67 @@ def main():
     importer = ImportService()
 
     while True:
-        print_menu()
-        choice = input("Select option: ")
+        try:
+            print_menu()
+            choice = input("Select option: ").strip()
 
-        if choice == "1":
-            for m in member_dao.find_all():
-                print(f"{m['id']} | {m['name']} {m['surname']} | {m['email']}")
+            if choice == "1":
+                for m in member_dao.find_all():
+                    print(f"{m['id']} | {m['name']} {m['surname']} | {m['email']}")
 
-        elif choice == "2":
-            for b in book_dao.find_all():
-                print(f"{b['id']} | {b['title']} | {b['genre']}")
+            elif choice == "2":
+                for b in book_dao.find_all():
+                    print(f"{b['id']} | {b['title']} | {b['genre']}")
 
-        elif choice == "3":
-            try:
-                member_id = int(input("Member ID: "))
-                copy_id = int(input("Copy ID: "))
-                due_date = input("Due date (YYYY-MM-DD): ")
+            elif choice == "3":
+                member_id = read_int("Member ID: ")
+                copy_id = read_int("Copy ID: ")
+                due_date = read_date("Due date (YYYY-MM-DD): ")
+
                 service.borrow_book(member_id, copy_id, due_date)
                 print("Book borrowed successfully")
-            except Exception as e:
-                print(f"Error: {e}")
 
-        elif choice == "4":
-            try:
-                loan_id = int(input("Loan ID: "))
+            elif choice == "4":
+                loan_id = read_int("Loan ID: ")
                 service.return_book(loan_id)
                 print("Book returned successfully")
-            except Exception as e:
-                print(f"Error: {e}")
 
-        elif choice == "5":
-            loans = loan_dao.find_all_active()
-            if not loans:
-                print("No active loans")
-            else:
-                for l in loans:
-                    print(
-                        f"{l['id']} | {l['member_id']} | "
-                        f"{l['copy_id']} | {l['loan_date']} | {l['due_date']}"
-                    )
+            elif choice == "5":
+                loans = loan_dao.find_all_active()
+                if not loans:
+                    print("No active loans")
+                else:
+                    for l in loans:
+                        print(
+                            f"{l['id']} | {l['member_id']} | "
+                            f"{l['copy_id']} | {l['loan_date']} | {l['due_date']}"
+                        )
 
-        elif choice == "6":
-            try:
+            elif choice == "6":
                 print("\nSelect entity:")
                 print("1. Members")
                 print("2. Books")
 
-                ent = input("Choice: ")
-                entity = "members" if ent == "1" else "books"
+                ent = read_int("Choice: ")
+                entity = "members" if ent == 1 else "books"
 
                 files = importer.list_files()
                 if not files:
-                    raise Exception("No import files found")
+                    print("No import files found")
+                    continue
 
                 filename = choose_file(files)
                 importer.import_data(entity, filename)
-
                 print("Import completed")
 
-            except Exception as e:
-                print(f"Error: {e}")
+            elif choice == "0":
+                break
 
-        elif choice == "0":
-            break
+            else:
+                print("Invalid option")
 
-        else:
-            print("Invalid option")
+        except Exception as e:
+            print(f"Error: {e}")
 
 
 if __name__ == "__main__":
