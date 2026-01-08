@@ -3,8 +3,8 @@
 
 Autor: Martin Šilar
 Škola: SPŠE Ječná
-Datum: 8. 1. 2026
-Typ práce: Školní projekt – programování a databázové systémy
+Datum: 8. 1. 2026  
+Typ práce: Školní projekt – programování a databázové systémy  
 
 ---
 
