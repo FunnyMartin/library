@@ -5,10 +5,16 @@
     "genre": "fiction",
     "published_year": 1949,
     "authors": [
-      {
-        "name": "George",
-        "surname": "Orwell"
-      }
+      { "name": "George", "surname": "Orwell" }
+    ]
+  },
+  {
+    "title": "Animal Farm",
+    "isbn": "9780451526342",
+    "genre": "fiction",
+    "published_year": 1945,
+    "authors": [
+      { "name": "George", "surname": "Orwell" }
     ]
   },
   {
@@ -17,10 +23,16 @@
     "genre": "nonfiction",
     "published_year": 2008,
     "authors": [
-      {
-        "name": "Robert",
-        "surname": "Martin"
-      }
+      { "name": "Robert", "surname": "Martin" }
+    ]
+  },
+  {
+    "title": "Clean Architecture",
+    "isbn": "9780134494166",
+    "genre": "nonfiction",
+    "published_year": 2017,
+    "authors": [
+      { "name": "Robert", "surname": "Martin" }
     ]
   },
   {
@@ -29,14 +41,56 @@
     "genre": "nonfiction",
     "published_year": 1999,
     "authors": [
-      {
-        "name": "Andrew",
-        "surname": "Hunt"
-      },
-      {
-        "name": "David",
-        "surname": "Thomas"
-      }
+      { "name": "Andrew", "surname": "Hunt" },
+      { "name": "David", "surname": "Thomas" }
+    ]
+  },
+  {
+    "title": "Design Patterns",
+    "isbn": "9780201633610",
+    "genre": "nonfiction",
+    "published_year": 1994,
+    "authors": [
+      { "name": "Erich", "surname": "Gamma" },
+      { "name": "Richard", "surname": "Helm" },
+      { "name": "Ralph", "surname": "Johnson" },
+      { "name": "John", "surname": "Vlissides" }
+    ]
+  },
+  {
+    "title": "The Hobbit",
+    "isbn": "9780547928227",
+    "genre": "fantasy",
+    "published_year": 1937,
+    "authors": [
+      { "name": "J.R.R.", "surname": "Tolkien" }
+    ]
+  },
+  {
+    "title": "The Lord of the Rings",
+    "isbn": "9780618640157",
+    "genre": "fantasy",
+    "published_year": 1954,
+    "authors": [
+      { "name": "J.R.R.", "surname": "Tolkien" }
+    ]
+  },
+  {
+    "title": "Dune",
+    "isbn": "9780441013593",
+    "genre": "sci-fi",
+    "published_year": 1965,
+    "authors": [
+      { "name": "Frank", "surname": "Herbert" }
+    ]
+  },
+  {
+    "title": "The Martian",
+    "isbn": "9780804139021",
+    "genre": "sci-fi",
+    "published_year": 2011,
+    "authors": [
+      { "name": "Andy", "surname": "Weir" }
     ]
   }
 ]

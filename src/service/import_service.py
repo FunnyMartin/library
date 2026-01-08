@@ -5,6 +5,7 @@ import os
 
 from src.dao.member_dao import MemberDAO
 from src.dao.book_dao import BookDAO
+from src.dao.copy_dao import CopyDAO
 
 
 class ImportService:
@@ -14,6 +15,8 @@ class ImportService:
     def __init__(self):
         self.member_dao = MemberDAO()
         self.book_dao = BookDAO()
+        self.copy_dao = CopyDAO()
+
 
     def list_files(self):
         if not os.path.exists(self.DATA_DIR):
@@ -25,7 +28,7 @@ class ImportService:
         ]
 
     def import_data(self, entity, filename):
-        if entity not in ("members", "books"):
+        if entity not in ("members", "books", "copies"):
             raise Exception("Unsupported entity")
 
         path = os.path.join(self.DATA_DIR, filename)
@@ -74,6 +77,17 @@ class ImportService:
                             published_year=row.get("published_year")
                         )
 
+                    elif entity == "copies":
+                        if not self._valid_copy(row):
+                            continue
+
+                        self.copy_dao.create(
+                            book_id=int(row["book_id"]),
+                            inventory_code=row["inventory_code"].strip(),
+                            status=row["status"].strip(),
+                            price=float(row["price"])
+                        )
+
                 except Exception:
                     continue
 
@@ -112,6 +126,18 @@ class ImportService:
                         published_year=item.get("published_year")
                     )
 
+                elif entity == "copies":
+                    if not self._valid_copy(item):
+                        continue
+
+                    self.copy_dao.create(
+                        book_id=int(item["book_id"]),
+                        inventory_code=item["inventory_code"].strip(),
+                        status=item["status"].strip(),
+                        price=float(item["price"])
+                    )
+
+
             except Exception:
                 continue
 
@@ -124,3 +150,8 @@ class ImportService:
     def _valid_book(self, data):
         required = ["title", "genre"]
         return all(k in data and str(data[k]).strip() for k in required)
+    
+    def _valid_copy(self, data):
+        required = ["book_id", "inventory_code", "status", "price"]
+        return all(k in data and str(data[k]).strip() for k in required)
+

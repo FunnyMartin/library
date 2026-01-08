@@ -2,3 +2,11 @@ name,surname,email,membership_type,active,created_at
 Jan,Novák,jan.novak@email.cz,basic,1,2024-01-10 10:30:00
 Petra,Svobodová,petra.svobodova@email.cz,premium,1,2024-02-05 14:15:00
 Tomáš,Dvořák,tomas.dvorak@email.cz,basic,0,2023-11-20 09:00:00
+Lucie,Králová,lucie.kralova@email.cz,premium,1,2024-03-12 11:00:00
+Martin,Černý,martin.cerny@email.cz,basic,1,2024-04-01 08:45:00
+Anna,Procházková,anna.prochazkova@email.cz,basic,1,2024-05-19 16:20:00
+Pavel,Kučera,pavel.kucera@email.cz,premium,0,2023-12-01 13:10:00
+Eva,Veselá,eva.vesela@email.cz,basic,1,2024-06-07 09:30:00
+Jakub,Marek,jakub.marek@email.cz,basic,1,2024-07-22 17:40:00
+Veronika,Horáková,veronika.horakova@email.cz,premium,1,2024-08-15 12:00:00
+

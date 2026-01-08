@@ -1,28 +1,21 @@
+
 # Public Library Management System
 
-**Autor:** Martin Šilar  
-**Škola:** SPŠE Ječná  
-**Datum:** 4. 1. 2026  
-**Typ práce:** Školní projekt – programování a databázové systémy  
+Autor: Martin Šilar
+Škola: SPŠE Ječná
+Datum: 8. 1. 2026
+Typ práce: Školní projekt – programování a databázové systémy
 
 ---
 
-## Popis projektu
+## 1. Popis projektu
 
-Tento projekt představuje jednoduchý informační systém pro správu veřejné knihovny.
-Aplikace umožňuje evidenci knihovních výpůjček, jejich vracení a práci s databází prostřednictvím textového uživatelského rozhraní (CLI).
-
-Projekt slouží k demonstraci:
-
-- práce s relační databází MySQL
-- návrhu vícevrstvé architektury
-- použití návrhového vzoru DAO
-- implementace databázových transakcí
-- testování aplikace pomocí testovacích scénářů
+CLI aplikace pro správu veřejné knihovny.
+Aplikace pracuje s relační databází MySQL a umožňuje správu knih, čtenářů, exemplářů a výpůjček.
 
 ---
 
-## Použité technologie
+## 2. Použité technologie
 
 - Python 3
 - MySQL
@@ -31,98 +24,105 @@ Projekt slouží k demonstraci:
 
 ---
 
-## Požadavky pro spuštění
+## 3. Požadavky na prostředí
 
-- Nainstalovaný Python 3
-- Běžící databázový server MySQL
-- Přístupové údaje k databázi (nastavitelné v `src/db/config.py`)
+- Python 3.x
+- MySQL Server
+- Přístup do MySQL
+- Terminál / příkazová řádka
+
+IDE není potřeba
 
 ---
 
-## Vytvoření databáze
+## 4. Konfigurace databáze
 
-Skripty lze spustit buď pomocí příkazu `SOURCE`, nebo přes MySQL Workbench.
+Konfigurace databázového připojení je uložena v souboru:
+
+`src/db/config.py`
+
+Obsah souboru:
+
+```[config.py]
+{
+  "host": "localhost",
+  "port": 3306,
+  "database": "library",
+  "user": "root",
+  "password": "student"
+}
+```
+
+Před spuštěním aplikace upravte hodnoty dle školního PC.
+
+---
+
+## 5. Inicializace databáze
 
 1. Přihlášení do MySQL:
 
-```bash
-mysql -u root -p
-```
+`mysql -u root -p`
 
-2. Vytvoření databáze a tabulek:
+2. Vytvoření struktury databáze:
 
-```sql
-SOURCE db/schema.sql;
-```
+`SOURCE db/schema.sql;`
 
 3. Vytvoření databázových pohledů:
 
-```sql
-SOURCE db/views.sql;
-```
+`SOURCE db/views.sql;`
 
 ---
 
-## Vložení testovacích dat
+## 6. Instalace závislostí
 
-Testovací data jsou připravena ve formátech:
-
-- CSV (`members.csv`)
-- JSON (`books.json`)
-
-Data slouží pro inicializační naplnění databáze a testování aplikace.
-Import dat je prováděn jednorázově podle dokumentace a testovacích scénářů.
+`pip install -r requirements.txt`
 
 ---
 
-## Instalace závislostí
+## 7. Import testovacích dat
 
-V kořenovém adresáři projektu spusťte:
+Adresář data/ obsahuje:
 
-```bash
-pip install -r requirements.txt
-```
+- members.csv
+- books.json
+- copies.csv
 
----
-
-## Spuštění aplikace
-
-Aplikace se spouští z příkazové řádky bez použití IDE:
-
-```bash
-python -m src.cli.app
-```
+Import se provádí z aplikace přes volbu „Import data“.
 
 ---
 
-## Ovládání aplikace
+## 8. Spuštění aplikace
 
-Po spuštění se zobrazí textové menu s možnostmi:
-
-- výpis registrovaných čtenářů
-- výpis knih
-- výpůjčka knihy
-- vrácení knihy
-- zobrazení aktivních výpůjček
-
-Ovládání probíhá zadáváním číselných voleb a identifikátorů (ID).
+`python -m src.cli.app`
 
 ---
 
-## Poznámka pro testera
+## 9. Ovládání aplikace
 
-- Tester nemusí znát zdrojový kód aplikace
-- Tester postupuje pouze podle tohoto README a testovacích scénářů
-- Zobrazení ID v CLI je záměrné a slouží k jednoznačné identifikaci záznamů při testování
+Menu obsahuje:
+
+1. List members
+
+2. List books
+
+3. Borrow book
+
+4. Return book
+
+5. Show active loans
+
+6. Import data
+
+7. Cancel loan
+
+8. Show book statistics report
+
+0. Exit
 
 ---
 
-## Dokumentace projektu
+## 10. Poznámky pro testera
 
-Projektová dokumentace je rozdělena do samostatných souborů:
-
-- `analysis.md` – analýza problému
-- `design.md` – návrh řešení
-- `test_scenarios.md` – testovací scénáře
-
-Tato struktura zajišťuje přehlednost a snadnou orientaci v projektu.
+- Tester nepotřebuje znát zdrojový kód
+- Tester postupuje pouze podle README a testovacích scénářů TS-01, TS-02, TS-03
+- Aplikace ošetřuje chybné vstupy a transakce

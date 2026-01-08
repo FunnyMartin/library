@@ -1,0 +1,11 @@
+book_id,inventory_code,status,price
+1,INV-1984-01,available,299.00
+1,INV-1984-02,available,299.00
+2,INV-AF-01,available,249.00
+3,INV-CC-01,available,499.00
+3,INV-CC-02,available,499.00
+4,INV-CA-01,available,549.00
+5,INV-PP-01,available,399.00
+6,INV-DP-01,available,699.00
+7,INV-HOB-01,available,279.00
+8,INV-LOTR-01,available,799.00
